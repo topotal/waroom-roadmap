@@ -1,6 +1,6 @@
-# Waroom public roadmap
+[English](https://github.com/topotal/waroom-roadmap) | [日本語](https://github.com/topotal/waroom-roadmap/blob/main/README.ja.md)
 
-[日本語](https://github.com/topotal/waroom-roadmap/blob/main/README_JP.md)
+# Waroom public roadmap
 
 This is the public roadmap for Waroom. We hope that by publishing the features we will add and their priorities, it will help you in your future planning.Customers can send [feedback and inquiries](https://github.com/topotal/waroom-roadmap/discussions) through this repository.
 
