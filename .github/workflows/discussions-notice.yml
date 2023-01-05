@@ -9,10 +9,50 @@ jobs:
     if: github.event.discussion && !github.event.comment
     steps:
       - run: |
-          curl -X POST -d '{ "text": "Created discussion: ${{ github.event.discussion.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d @- << EOF
+          {
+            "text": "*<${{ github.event.discussion.user.html_url }}|${{ github.event.discussion.user.login }}>* が Discussions を作成しました",
+            "attachments": [
+              {
+                "color": "#CCCCCC",
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*<${{ github.event.discussion.html_url }}|${{ github.event.discussion.title }}>*\n${{ github.event.discussion.body }}",
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
   discussion_commented:
     runs-on: ubuntu-latest
     if: github.event.discussion && github.event.comment
     steps:
       - run: |
-          curl -X POST -d '{ "text": "Created discussion comment: ${{ github.event.comment.html_url }}" }' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d @- << EOF
+          {
+            "text": "*<${{ github.event.comment.user.html_url }}|${{ github.event.comment.user.login }}>* が Discussions にコメントしました",
+            "attachments": [
+              {
+                "color": "#CCCCCC",
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*<${{ github.event.comment.html_url }}|${{ github.event.discussion.title }}>*\n${{ github.event.comment.body }}",
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
