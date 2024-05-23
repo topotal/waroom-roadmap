@@ -4,7 +4,7 @@
 
 This is the public roadmap for Waroom. We hope that by publishing the features we will add and their priorities, it will help you in your future planning.Customers can send [feedback and inquiries](https://github.com/topotal/waroom-roadmap/discussions) through this repository.
 
-[See the roadmap >>](https://github.com/topotal/waroom-roadmap/projects/1)
+[See the roadmap >>](https://github.com/orgs/topotal/projects/15)
 
 ## License Summary
 
